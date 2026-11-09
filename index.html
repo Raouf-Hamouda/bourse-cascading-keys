@@ -292,7 +292,7 @@ const P = {
   // keys
   preset: 'Cascading Keys',
   keyW: 0.30, keyH: 0.42, gapX: 0.08, gapY: 0.10, thickness: 0.002, density: 2700,
-  coverage: 'between columns + wings', standoff: 1.2, bottom: B.base, top: B.topEntab,
+  coverage: 'between columns', standoff: 1.2, bottom: B.base, top: B.topEntab,
   // colours
   front: '#1f3fff', back: '#f4f4f4', rods: '#2b2b2b', metalness: 0.85, roughness: 0.32,
   // wind
@@ -328,12 +328,12 @@ function bays() {
   const s = [];
   for (let i = 0; i < B.columns - 1; i++) {
     const a = -half + B.bay / 2 + i * B.bay;
-    s.push([a + 0.35, a + B.bay - 0.35, FRONT - 2.9]);   // curtain behind the column shafts
+    s.push([a + 0.35, a + B.bay - 0.35, FRONT - 2.0]);   // curtain behind the column shafts
   }
   return s;
 }
 function behindColumns() { return P.coverage.startsWith('between columns'); }
-function skinZ() { return behindColumns() ? FRONT - 2.9 : FRONT + P.standoff; }
+function skinZ() { return behindColumns() ? FRONT - 2.0 : FRONT + P.standoff; }
 let kz;   // per-key z
 let det, dx, dy, dz, ex, ey, ez;   // detached flag, drag offset, explode direction
 function skinTop() { return behindColumns() ? Math.min(P.top, B.topColumn - 0.3) : P.top; }
